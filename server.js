@@ -3,7 +3,6 @@ const connectDB = require("./config/db_config");
 const errorHandler = require("./middleware/errorHandler");
 require("dotenv").config();
 
-
 const app = express();
 
 // connect DATABASE
@@ -12,8 +11,15 @@ connectDB();
 const PORT = process.env.PORT || 2000;
 
 const cors = require("cors");
-app.use(cors());
-
+app.use(
+  cors({
+    origin: [
+      "https://localhost:5173",
+      "https://chronowatchcare.vercel.app",
+      "https://chrono-watch-care-2.onrender.com/",
+    ],
+  })
+);
 
 // body parser
 app.use(express.json());
