@@ -3,14 +3,17 @@ const connectDB = require("./config/db_config");
 const errorHandler = require("./middleware/errorHandler");
 require("dotenv").config();
 
+
 const app = express();
+
+// connect DATABASE
+connectDB();
 
 const PORT = process.env.PORT || 2000;
 
 const cors = require("cors");
 app.use(cors());
-// connect DATABASE
-connectDB();
+
 
 // body parser
 app.use(express.json());
